@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franklin Flyers - 308 Basketball</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #CC0000 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .tagline {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #CC0000;
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(204,0,0,0.5);
+            background: #FF0000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #CC0000;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .info-card {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #CC0000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #CC0000;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-card h3::before {
+            content: "🏀";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .info-card p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .schedule-section {
+            background: #f9f9f9;
+        }
+
+        .schedule-list {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .schedule-list h3 {
+            color: #CC0000;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .schedule-list ul {
+            list-style: none;
+        }
+
+        .schedule-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f5f5f5;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .schedule-list li::before {
+            content: "📅";
+            margin-right: 15px;
+            font-size: 1.3em;
+        }
+
+        .overview-section {
+            background: white;
+        }
+
+        .overview-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15em;
+            line-height: 1.9;
+        }
+
+        .overview-content p {
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: #FFF5F5;
+            border-left: 5px solid #CC0000;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box strong {
+            color: #CC0000;
+            font-size: 1.2em;
+        }
+
+        .callout-box {
+            background: #1a1a1a;
+            color: white;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            border: 3px solid #CC0000;
+            text-align: center;
+        }
+
+        .callout-box h3 {
+            color: #CC0000;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .callout-box p {
+            font-size: 1.2em;
+            line-height: 1.7;
+        }
+
+        .registration-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .registration-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #CC0000 0%, transparent 100%);
+            opacity: 0.2;
+        }
+
+        .registration-section .section-title {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .registration-section p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reg-deadline {
+            background: rgba(204,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 500px;
+            border: 2px solid #CC0000;
+            position: relative;
+            z-index: 1;
+        }
+
+        .age-groups {
+            text-align: center;
+            font-size: 1.3em;
+            margin-top: 30px;
+            padding: 25px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            border: 2px solid #CC0000;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 3px solid #CC0000;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .schedule-list {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="Flyer_Basketball_Logo.png" alt="Franklin Flyers Basketball Logo" style="max-width: 200px; height: auto; margin-bottom: 20px; position: relative; z-index: 1;">
+        <h1>Franklin Flyers</h1>
+        <p class="subtitle">308 Basketball</p>
+        <p class="tagline">Representing Franklin at the Kearney 3-on-3 League</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSepLclS5AOK4BCrItq-7flGwQmAg9QzYGB38oaSgA19H6vQPw/viewform?usp=dialog" class="cta-button" target="_blank">Join the Team</a>
+    </div>
+
+    <section class="overview-section">
+        <div class="container">
+            <h2 class="section-title">Join Franklin Flyers</h2>
+            <div class="overview-content">
+                <p>The Franklin Flyers are assembling a team to compete in the 2026 3-on-3 Basketball League in Kearney! This is an exciting opportunity for Franklin youth basketball players to represent our community and compete against teams from across the region.</p>
+                
+                <div class="callout-box">
+                    <h3>Why Join?</h3>
+                    <p>Develop your skills in fast-paced 3-on-3 action • Represent Franklin • Compete in Kearney • Build teamwork and basketball IQ</p>
+                </div>
+
+                <p>The 3-on-3 format gives you more touches, more shots, and more opportunities to showcase your abilities. You'll improve your ball handling, decision making, and individual skills while competing as part of the Franklin Flyers.</p>
+
+                <div class="highlight-box">
+                    <strong>Spring/Summer Season 2026</strong><br>
+                    Four competitive games at Kearney SportsPlex - represent Franklin with pride!
+                </div>
+
+                <div class="age-groups">
+                    🏀 Open to 2nd Grade through High School - Boys and Girls 🏀
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Tournament Details</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>When</h3>
+                    <p><strong>June 5 - June 25, 2026</strong><br>
+                    Four consecutive Thursdays<br>
+                    Spring/Summer Season</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Where</h3>
+                    <p><strong>Kearney SportsPlex</strong><br>
+                    1415 Younes Drive<br>
+                    Kearney, NE 68845</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Player Fee</h3>
+                    <p><strong>$70 per player</strong><br>
+                    Covers all 4 game dates<br>
+                    Registration fee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="schedule-section">
+        <div class="container">
+            <h2 class="section-title">Tournament Schedule</h2>
+            <div class="schedule-list">
+                <h3>2026 Game Dates</h3>
+                <ul>
+                    <li>June 5</li>
+                    <li>June 12</li>
+                    <li>June 19</li>
+                    <li>June 25 (Thursday)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration-section" id="register">
+        <div class="container">
+            <h2 class="section-title">Join the Franklin Flyers</h2>
+            <p>Sign up to represent Franklin in the Kearney 3-on-3 League!</p>
+            
+            <div class="reg-deadline">
+                <p style="font-size: 1.1em; margin-bottom: 10px;">⏰ Sign Up Deadline</p>
+                <p style="font-size: 2em; font-weight: bold; margin: 0;">April 15, 2026</p>
+            </div>
+
+            <!-- REPLACE THE URL BELOW WITH YOUR ACTUAL REGISTRATION FORM LINK -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSepLclS5AOK4BCrItq-7flGwQmAg9QzYGB38oaSgA19H6vQPw/viewform?usp=dialog" class="cta-button" target="_blank">Sign Up for Franklin Flyers</a>
+            
+            <p style="margin-top: 40px; font-size: 1em; opacity: 0.9; position: relative; z-index: 1;">
+                Questions? Contact 308 Basketball
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Franklin Flyers • 308 Basketball</strong></p>
+            <p>Franklin, Nebraska</p>
+            <p>Representing our community with pride</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">&copy; 2026 308 Basketball. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
